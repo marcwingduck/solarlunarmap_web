@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>ESP8266 MicroPython Smart Map</title>
+    <title>Paris Solaire/Lunaire</title>
     <link rel="stylesheet" href="resources/bootstrap.min.css">
     <link rel="stylesheet" href="resources/style.css">
     <link rel="icon" href="resources/favicon.png">
@@ -13,25 +13,24 @@
     <div class="container">
         <!--header-->
         <div class="row">
-            <div class="col-8 mx-auto jumbotron">
-                <h2>Paris Solaire/Lunaire</h2>
-                <p class="lead">Send commands to your Solar/Lunar Map of Paris.</p>
-                <span class="label label-info" id="status"></span>
-                <form class="form-inline">
-                    <div class="form-group">
-                        <label for="boardURL">URL</label>
-                        <input type="text" class="form-control" id="boardURL" value="ws://192.168.4.1:8266/">
+            <div class="col-12 col-sm-6 mx-auto card bg-dark text-white">
+                <h3>Paris Solaire/Lunaire</h3>
+                <!--<h5>Send commands to your Solar/Lunar Map of Paris.</h5>-->
+                <h5>Status <span class="badge badge-secondary" id="status"></span></h5>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="boardURL" value="ws://192.168.0.201:8266/">
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <div class="btn-group d-flex">
+                        <button class="btn btn-secondary" type="button" id="open">Open</button>
+                        <button class="btn btn-secondary" type="button" id="close">Close</button>
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
-                    </div>
-                    <button class="btn btn-primary" type="button" id="open">Open</button>
-                    <button class="btn btn-primary" type="button" id="close">Close</button>
-                </form>
+                </div>
             </div>
         </div>
-        <!--image and color buttons-->
+    </div>
+    <!--image and color buttons-->
+    <div class="container">
+        <!--row 1 north brightness-->
         <div class="row flex-nowrap no-gutters">
             <div class="col"></div>
             <div class="col-8">
@@ -39,41 +38,45 @@
             </div>
             <div class="col"></div>
         </div>
+        <!--row 2 north color-->
         <div class="row flex-nowrap no-gutters">
             <div class="col"></div>
-            <div class="col-8">
-                <input type="color" class="form-control color-form" id="north" value="#ff0000">
+            <div class="col-8 color-picker-wrapper">
+                <input type="color" class="form-control" id="north" value="#ff0000">
             </div>
             <div class="col"></div>
         </div>
+        <!--row 3 west brightness/color, main image, east color/brightness-->
         <div class="row flex-nowrap no-gutters">
             <div class="col">
-                <div class="vert-wrap">
-                    <input type="range" class="form-control-range vert" id="wWest" min=0 max=255 value=0>
+                <div class="vertical-slider-container">
+                    <input type="range" class="form-control-range vertical-slider" id="wWest" min=0 max=255 value=0>
                 </div>
             </div>
-            <div class="col">
-                <input type="color" class="form-control color-form" id="west" value="#0000ff">
+            <div class="col color-picker-wrapper">
+                <input type="color" class="form-control" id="west" value="#0000ff">
             </div>
             <div class="col-8">
                 <img class="img-fluid" src="resources/paris.jpg">
             </div>
-            <div class="col">
-                <input type="color" class="form-control color-form" id="east" value="#00ffff">
+            <div class="col color-picker-wrapper">
+                <input type="color" class="form-control" id="east" value="#00ffff">
             </div>
             <div class="col">
-                <div class="vert-wrap">
-                    <input type="range" class="form-control-range vert" id="wEast" min=0 max=255 value=0>
+                <div class="vertical-slider-container">
+                    <input type="range" class="form-control-range vertical-slider" id="wEast" min=0 max=255 value=0>
                 </div>
             </div>
         </div>
+        <!--row 4 south color-->
         <div class="row flex-nowrap no-gutters">
             <div class="col"></div>
-            <div class="col-8" id="south-view">
-                <input type="color" class="form-control color-form" id="south" value="#00ff00">
+            <div class="col-8 color-picker-wrapper" id="south-view">
+                <input type="color" class="form-control" id="south" value="#00ff00">
             </div>
             <div class="col"></div>
         </div>
+        <!--row 5 south brightness-->
         <div class="row flex-nowrap no-gutters">
             <div class="col"></div>
             <div class="col-8">
@@ -81,26 +84,24 @@
             </div>
             <div class="col"></div>
         </div>
-        <!--buttons-->
-        <div class="row">
-            <div class="col-8 mx-auto">
-                <div id="selector" class="btn-group-vertical" role="group">
-                    <button class="btn btn-light text-left" type="button">stop_timer()</button>
-                    <button class="btn btn-light text-left" type="button">run_solun()</button>
-                    <button class="btn btn-light text-left" type="button">run_clock()</button>
-                    <button class="btn btn-light text-left" type="button">run_clock(neon=True)</button>
-                    <button class="btn btn-light text-left" type="button">neon_sides()</button>
-                    <button class="btn btn-light text-left" type="button">bounce('north', {north}, {west}, {east}, True,
-                        10)</button>
-                    <button class="btn btn-light text-left" type="button">cycle_channels()</button>
-                    <button class="btn btn-light text-left" type="button">cycle_color({north})</button>
-                    <button class="btn btn-light text-left"
-                        type="button">set_sides({north},{east},{south},{west})</button>
-                    <button class="btn btn-light text-left" type="button">set_vertical({north},{south})</button>
-                    <button class="btn btn-light text-left" type="button">set_vertical_interp({north},{south})</button>
-                    <button class="btn btn-light text-left" type="button">set_horizontal({east},{west})</button>
-                    <button class="btn btn-light text-left" type="button">solun_demo()</button>
-                </div>
+    </div>
+    <!--buttons-->
+    <div class="container">
+        <div class="text-center">
+            <div id="selector" class="col-12 col-sm-6 btn-group-vertical" role="group">
+                <button class="btn btn-dark text-left" type="button">stop_timer()</button>
+                <button class="btn btn-dark text-left" type="button">run_solun()</button>
+                <button class="btn btn-dark text-left" type="button">run_clock()</button>
+                <button class="btn btn-dark text-left" type="button">run_clock(neon=True)</button>
+                <button class="btn btn-dark text-left" type="button">neon_sides()</button>
+                <button class="btn btn-dark text-left" type="button">bounce('north', {north}, {west}, {east}, True, 10)</button>
+                <button class="btn btn-dark text-left" type="button">cycle_channels()</button>
+                <button class="btn btn-dark text-left" type="button">cycle_color({north})</button>
+                <button class="btn btn-dark text-left" type="button">set_sides({north},{east},{south},{west})</button>
+                <button class="btn btn-dark text-left" type="button">set_vertical({north},{south})</button>
+                <button class="btn btn-dark text-left" type="button">set_vertical_interp({north},{south})</button>
+                <button class="btn btn-dark text-left" type="button">set_horizontal({east},{west})</button>
+                <button class="btn btn-dark text-left" type="button">solun_demo()</button>
             </div>
         </div>
     </div>
@@ -114,7 +115,6 @@
         ws = new WebSocket(url);
         ws.onopen = function () {
             ws.onmessage = function (e) {
-
             }
             ws.send(password + '\r\n');
             ws.send('\x03');
@@ -149,13 +149,39 @@
         }
     }
 
+    function resizeVerticalSliders() {
+        $('#wWest').css('width', $('#wWest').parent().height());
+        $('#wWest').css('height', $('#wWest').parent().width());
+        var px = $('#wWest').parent().width() / 2;
+        var py = $('#wWest').parent().height() / 2;
+        $('#wWest').css('left', px - py).css('top', py - px);
+
+        $('#wEast').css('width', $('#wEast').parent().height());
+        $('#wEast').css('height', $('#wEast').parent().width());
+        var px = $('#wEast').parent().width() / 2;
+        var py = $('#wEast').parent().height() / 2;
+        $('#wEast').css('left', px - py).css('top', py - px);
+    }
+
+    function connect() {
+        var boardURL = $('#boardURL').val();
+        var password = $('#password').val();
+        webreplConnect(boardURL, password);
+    }
+
     $(document).ready(function () {
         updateStatus(ws);
 
+        $('#password').focus();
+        $('#password').keypress(function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                connect();
+            }
+        });
+
         $('#open').click(function () {
-            var boardURL = $('#boardURL').val();
-            var password = $('#password').val();
-            webreplConnect(boardURL, password);
+            connect()
         });
 
         $('#close').click(function () {
@@ -181,17 +207,20 @@
             }
         });
 
-        $('#wWest').css('width', $('#wWest').parent().height());
-        $('#wWest').css('height', $('#wWest').parent().width());
-        var px = $('#wWest').parent().width() / 2;
-        var py = $('#wWest').parent().height() / 2;
-        $('#wWest').css('left', px - py).css('top', py - px);
+        resizeVerticalSliders();
 
-        $('#wEast').css('width', $('#wEast').parent().height());
-        $('#wEast').css('height', $('#wEast').parent().width());
-        var px = $('#wEast').parent().width() / 2;
-        var py = $('#wEast').parent().height() / 2;
-        $('#wEast').css('left', px - py).css('top', py - px);
+        var string = "north,east,south,west";
+        $.each(string.split(','), function () {
+            var color_picker = document.getElementById(this);
+            $(color_picker).parent().css("background-color", color_picker.value);
+            color_picker.onchange = function () {
+                $(color_picker).parent().css("background-color", color_picker.value);
+            }
+        })
+    });
+
+    $(window).on('resize', function () {
+        resizeVerticalSliders();
     });
 </script>
 
