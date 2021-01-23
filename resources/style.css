@@ -13,8 +13,6 @@ input[type="color"] {
 
 #color-picker-wrapper {
     float: left;
-    background-color: red;
-    color: red;
 }
 
 .vertical-slider-container {
