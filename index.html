@@ -32,17 +32,14 @@
     <div class="container">
         <!--row 1 north brightness-->
         <div class="row flex-nowrap no-gutters">
-            <div class="col"></div>
-            <div class="col-8">
+            <div class="col-8 offset-2">
                 <input type="range" class="form-control-range" id="wNorth" min=0 max=255 value=0>
             </div>
-            <div class="col"></div>
         </div>
         <!--row 2 north color-->
         <div class="row flex-nowrap no-gutters">
-            <div class="col"></div>
-            <div class="col-8 color-picker-wrapper">
-                <input type="color" class="form-control" id="north" value="#ff0000">
+            <div class="col-8 offset-2 color-picker-wrapper">
+                <input type="color" class="form-control" id="north" value="#00ffff">
             </div>
             <div class="col"></div>
         </div>
@@ -54,13 +51,13 @@
                 </div>
             </div>
             <div class="col color-picker-wrapper">
-                <input type="color" class="form-control" id="west" value="#0000ff">
+                <input type="color" class="form-control" id="west" value="#00ff00">
             </div>
             <div class="col-8">
                 <img class="img-fluid" src="resources/paris.jpg">
             </div>
             <div class="col color-picker-wrapper">
-                <input type="color" class="form-control" id="east" value="#00ffff">
+                <input type="color" class="form-control" id="east" value="#ffff00">
             </div>
             <div class="col">
                 <div class="vertical-slider-container">
@@ -70,16 +67,14 @@
         </div>
         <!--row 4 south color-->
         <div class="row flex-nowrap no-gutters">
-            <div class="col"></div>
-            <div class="col-8 color-picker-wrapper" id="south-view">
-                <input type="color" class="form-control" id="south" value="#00ff00">
+            <div class="col-8 offset-2 color-picker-wrapper" id="south-view">
+                <input type="color" class="form-control" id="south" value="#ff00ff">
             </div>
             <div class="col"></div>
         </div>
         <!--row 5 south brightness-->
         <div class="row flex-nowrap no-gutters">
-            <div class="col"></div>
-            <div class="col-8">
+            <div class="col-8 offset-2">
                 <input type="range" class="form-control-range" id="wSouth" min=0 max=255 value=0>
             </div>
             <div class="col"></div>
@@ -89,18 +84,22 @@
     <div class="container">
         <div class="text-center">
             <div id="selector" class="col-12 col-sm-6 btn-group-vertical" role="group">
-                <button class="btn btn-dark text-left" type="button">stop_timer()</button>
+                <h4 class="text-white">Dynamic</h4>
                 <button class="btn btn-dark text-left" type="button">run_solun()</button>
                 <button class="btn btn-dark text-left" type="button">run_clock()</button>
                 <button class="btn btn-dark text-left" type="button">run_clock(neon=True)</button>
+                <button class="btn btn-dark text-left" type="button">run_random()</button>
+                <h4 class="text-white">Static</h4>
+                <button class="btn btn-dark text-left" type="button">stop_timer()</button>
                 <button class="btn btn-dark text-left" type="button">neon_sides()</button>
-                <button class="btn btn-dark text-left" type="button">bounce('north', {north}, {west}, {east}, True, 10)</button>
-                <button class="btn btn-dark text-left" type="button">cycle_channels()</button>
-                <button class="btn btn-dark text-left" type="button">cycle_color({north})</button>
                 <button class="btn btn-dark text-left" type="button">set_sides({north},{east},{south},{west})</button>
                 <button class="btn btn-dark text-left" type="button">set_vertical({north},{south})</button>
                 <button class="btn btn-dark text-left" type="button">set_vertical_interp({north},{south})</button>
                 <button class="btn btn-dark text-left" type="button">set_horizontal({east},{west})</button>
+                <h4 class="text-white">Demo Animation</h4>
+                <button class="btn btn-dark text-left" type="button">bounce('north', {north}, {west}, {east}, True, 10)</button>
+                <button class="btn btn-dark text-left" type="button">cycle_channels()</button>
+                <button class="btn btn-dark text-left" type="button">cycle_color({north})</button>
                 <button class="btn btn-dark text-left" type="button">solun_demo()</button>
             </div>
         </div>
@@ -169,6 +168,25 @@
         webreplConnect(boardURL, password);
     }
 
+    function updateColor(object) {
+        var direction = "";
+
+        if (object.id == "north") {
+            direction = "to top";
+        }
+        else if (object.id == "east") {
+            direction = "to right";
+        }
+        else if (object.id == "south") {
+            direction = "to bottom";
+        }
+        else if (object.id == "west") {
+            direction = "to left";
+        }
+
+        $(object).parent().css("background-image", "linear-gradient(" + direction + "," + object.value + ", rgba(0,0,0,0))");
+    }
+
     $(document).ready(function () {
         updateStatus(ws);
 
@@ -209,12 +227,12 @@
 
         resizeVerticalSliders();
 
-        var string = "north,east,south,west";
-        $.each(string.split(','), function () {
+        var cardinals = "north,east,south,west";
+        $.each(cardinals.split(','), function () {
             var color_picker = document.getElementById(this);
-            $(color_picker).parent().css("background-color", color_picker.value);
+            updateColor(color_picker);
             color_picker.onchange = function () {
-                $(color_picker).parent().css("background-color", color_picker.value);
+                updateColor(this);
             }
         })
     });
