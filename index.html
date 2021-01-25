@@ -18,7 +18,7 @@
                 <!--<h5>Send commands to your Solar/Lunar Map of Paris.</h5>-->
                 <h5>Status <span class="badge badge-secondary" id="status"></span></h5>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="boardURL" value="ws://192.168.0.201:8266/">
+                    <input type="text" class="form-control" id="boardURL" value="ws://192.168.0.180:8266/">
                     <input type="password" class="form-control" id="password" placeholder="Password">
                     <div class="btn-group d-flex">
                         <button class="btn btn-secondary" type="button" id="open">Open</button>
@@ -87,7 +87,8 @@
                 <h4 class="text-white">Dynamic</h4>
                 <button class="btn btn-dark text-left" type="button">run_solun()</button>
                 <button class="btn btn-dark text-left" type="button">run_clock()</button>
-                <button class="btn btn-dark text-left" type="button">run_clock(neon=True)</button>
+                <button class="btn btn-dark text-left" type="button">run_clock(neon=True,linear=True)</button>
+                <button class="btn btn-dark text-left" type="button">run_clock(neon=True,linear=False)</button>
                 <button class="btn btn-dark text-left" type="button">run_random()</button>
                 <h4 class="text-white">Static</h4>
                 <button class="btn btn-dark text-left" type="button">stop_timer()</button>
@@ -97,6 +98,7 @@
                 <button class="btn btn-dark text-left" type="button">set_horizontal({east},{west})</button>
                 <h4 class="text-white">Demo Animation</h4>
                 <button class="btn btn-dark text-left" type="button">bounce('north', {north}, {west}, {east}, True, 10)</button>
+                <button class="btn btn-dark text-left" type="button">bounce('south', {south}, {west}, {east}, False, 10)</button>
                 <button class="btn btn-dark text-left" type="button">cycle_channels()</button>
                 <button class="btn btn-dark text-left" type="button">cycle_color({north})</button>
                 <button class="btn btn-dark text-left" type="button">solun_demo()</button>
