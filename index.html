@@ -18,7 +18,7 @@
                 <!--<h5>Send commands to your Solar/Lunar Map of Paris.</h5>-->
                 <h5>Status <span class="badge badge-secondary" id="status"></span></h5>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="boardURL" value="ws://192.168.0.180:8266/">
+                    <input type="text" class="form-control" id="boardURL" value="ws://192.168.0.188:8266/">
                     <input type="password" class="form-control" id="password" placeholder="Password">
                     <div class="btn-group d-flex">
                         <button class="btn btn-secondary" type="button" id="open">Open</button>
@@ -112,9 +112,13 @@
                 <button class="btn btn-dark text-left" type="button">run_clock(neon=True,linear=True)</button>
                 <button class="btn btn-dark text-left" type="button">run_clock(neon=True,linear=False)</button>
                 <button class="btn btn-dark text-left" type="button">run_random()</button>
-                <button class="btn btn-dark text-left" type="button">run_spin({north})</button>
+                <button class="btn btn-dark text-left" type="button">run_spin({north},{frequency})</button>
                 <button class="btn btn-dark text-left" type="button">run_larson_scanner('south', {north}, {south})</button>
                 <button class="btn btn-dark text-left" type="button">stop_timer()</button>
+                <div class="input-group">
+                    <input type="number" id="frequency" min="0" step="0.1" value="0.25" class="form-control" />
+                    <label class="form-label" for="frequency">Frequency</label>
+                </div>
                 <h4 class="text-white">Static</h4>
                 <button class="btn btn-dark text-left" type="button">set_sides({north},{east},{south},{west}, True)</button>
                 <button class="btn btn-dark text-left" type="button">set_sides({north},{east},{south},{west}, False)</button>
@@ -216,6 +220,7 @@
         updateStatus(ws);
 
         $('#password').focus();
+        $('#password').val('pvris');
         $('#password').keypress(function (event) {
             var keycode = (event.keyCode ? event.keyCode : event.which);
             if (keycode == '13') {
@@ -239,11 +244,13 @@
             var w3 = parseInt($('#wSouth').val());
             var w4 = parseInt($('#wWest').val());
 
+            var f = parseFloat($('#frequency').val());
+
             var c1 = hex2rgb($('#north').val(), w1);
             var c2 = hex2rgb($('#east').val(), w2);
             var c3 = hex2rgb($('#south').val(), w3);
             var c4 = hex2rgb($('#west').val(), w4);
-            fn = $(this).text().replace('{north}', c1).replace('{east}', c2).replace('{south}', c3).replace('{west}', c4);
+            fn = $(this).text().replace('{north}', c1).replace('{east}', c2).replace('{south}', c3).replace('{west}', c4).replace('{frequency}', f);
             console.log(fn);
             if (ws) {
                 ws.send('paris.' + fn + '\r\n');

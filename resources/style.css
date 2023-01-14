@@ -11,6 +11,10 @@ input[type="color"] {
     border: none;
 }
 
+.form-label {
+    color: #ffffff;
+}
+
 #color-picker-wrapper {
     float: left;
 }
