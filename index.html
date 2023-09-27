@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container mt-2">
 
         <!--header-->
         <div class="col-12 col-sm-6 mx-auto card bg-dark text-white">
@@ -41,9 +41,26 @@
             </form>
 
             <div class="btn-group" role="group">
-                <button class="btn btn-dark w-100" type="button" id="focusmode">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
-                        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+                <button class="btn btn-dark w-100" type="button" id="btn-solun">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sunrise-fill" viewBox="0 0 16 16">
+                        <path d="M7.646 1.146a.5.5 0 0 1 .708 0l1.5 1.5a.5.5 0 0 1-.708.708L8.5 2.707V4.5a.5.5 0 0 1-1 0V2.707l-.646.647a.5.5 0 1 1-.708-.708l1.5-1.5zM2.343 4.343a.5.5 0 0 1 .707 0l1.414 1.414a.5.5 0 0 1-.707.707L2.343 5.05a.5.5 0 0 1 0-.707zm11.314 0a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zM11.709 11.5a4 4 0 1 0-7.418 0H.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1h-3.79zM0 10a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 10zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                </button>
+                <button class="btn btn-dark w-100" type="button" id="btn-clock">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                    </svg>
+                </button>
+                <button class="btn btn-dark w-100" type="button" id="btn-ambient">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-moon-fill" viewBox="0 0 16 16">
+                        <path d="M11.473 11a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 16h8.5a2.5 2.5 0 0 0 0-5h-.027z" />
+                        <path d="M11.286 1.778a.5.5 0 0 0-.565-.755 4.595 4.595 0 0 0-3.18 5.003 5.46 5.46 0 0 1 1.055.209A3.603 3.603 0 0 1 9.83 2.617a4.593 4.593 0 0 0 4.31 5.744 3.576 3.576 0 0 1-2.241.634c.162.317.295.652.394 1a4.59 4.59 0 0 0 3.624-2.04.5.5 0 0 0-.565-.755 3.593 3.593 0 0 1-4.065-5.422z" />
+                    </svg>
+                </button>
+                <button class="btn btn-dark w-100" type="button" id="btn-focus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lamp-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M5.04.303A.5.5 0 0 1 5.5 0h5c.2 0 .38.12.46.303l3 7a.5.5 0 0 1-.363.687h-.002c-.15.03-.3.056-.45.081a32.731 32.731 0 0 1-4.645.425V13.5a.5.5 0 1 1-1 0V8.495a32.753 32.753 0 0 1-4.645-.425c-.15-.025-.3-.05-.45-.08h-.003a.5.5 0 0 1-.362-.688l3-7Z" />
+                        <path d="M6.493 12.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.052.075l-.001.004-.004.01V14l.002.008a.147.147 0 0 0 .016.033.62.62 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.62.62 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411Z" />
                     </svg>
                 </button>
             </div>
@@ -76,7 +93,7 @@
     -->
 
     <!--image and color buttons-->
-    <div class="container">
+    <div class="container mt-2">
         <!--row 1 north brightness-->
         <div class="row flex-nowrap no-gutters">
             <div class="col-8 offset-2">
@@ -129,9 +146,9 @@
     </div>
 
     <!--buttons-->
-    <div class="container text-center">
+    <div class="container mt-2 text-center">
 
-        <h4 class="text-white">Dynamic (Timer)</h4>
+        <h4 class="text-white mt-2">Dynamic (Timer)</h4>
 
         <div class="btn-group-vertical col-12 col-sm-6" role="group">
             <button class="code-btn btn btn-dark text-left w-100" type="button">run_solun()</button>
@@ -149,7 +166,7 @@
             </div>
         </div>
 
-        <h4 class="text-white">Static</h4>
+        <h4 class="text-white mt-2">Static</h4>
 
         <div class="btn-group-vertical col-12 col-sm-6" role="group">
             <button class="code-btn btn btn-dark text-left w-100" type="button">set_sides({north},{east},{south},{west}, True)</button>
@@ -160,7 +177,7 @@
             <button class="code-btn btn btn-dark text-left" type="button">set_circular_background({north})</button>
         </div>
 
-        <h4 class="text-white">Demo/Tests (blocking)</h4>
+        <h4 class="text-white mt-2">Demo/Tests (blocking)</h4>
 
         <div class="btn-group-vertical col-12 col-sm-6" role="group">
             <button class="code-btn btn btn-dark text-left" type="button">cycle_channels()</button>
@@ -321,10 +338,29 @@
             }
         });
 
-        $('#focusmode').click(function () {
+        $('#btn-solun').click(function () {
+            if (ws) {
+                ws.send('paris.run_solun()\r\n');
+            }
+        });
+
+        $('#btn-clock').click(function () {
+            if (ws) {
+                ws.send('paris.run_clock()\r\n');
+            }
+        });
+
+        $('#btn-ambient').click(function () {
             if (ws) {
                 ws.send('paris.stop_timer()\r\n');
-                /* top right bottom left */
+                ws.send("paris.paris('leds_1')\r\n");
+                ws.send('paris.fade_to()\r\n');
+            }
+        });
+
+        $('#btn-focus').click(function () {
+            if (ws) {
+                ws.send('paris.stop_timer()\r\n');
                 ws.send('paris.set_sides((0,32,127,0),(0,32,127,0),(0,0,0,127),(0,32,127,0),False)\r\n');
             }
         });
