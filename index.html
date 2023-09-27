@@ -4,32 +4,55 @@
 <head>
     <meta charset="utf-8">
     <title>Paris Solaire/Lunaire</title>
-    <link rel="stylesheet" href="resources/bootstrap.min.css">
-    <link rel="stylesheet" href="resources/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="resources/favicon.png">
 </head>
 
 <body>
     <div class="container">
+
         <!--header-->
-        <div class="row">
-            <div class="col-12 col-sm-6 mx-auto card bg-dark text-white">
-                <h3>Paris Solaire/Lunaire</h3>
-                <!--<h5>Send commands to your Solar/Lunar Map of Paris.</h5>-->
-                <h5>Status <span class="badge badge-secondary" id="status"></span></h5>
+        <div class="col-12 col-sm-6 mx-auto card bg-dark text-white">
+            <h3>Paris Solaire/Lunaire <span class="badge badge-secondary" id="status"></span></h3>
+
+            <!--<h5>Power <span class="badge badge-secondary" id="plugStatus"></span></h5>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="boardURL" value="ws://192.168.0.188:8266/">
-                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <input type="text" class="form-control" id="plugURL" value="http://192.168.0.223/">
                     <div class="btn-group d-flex">
-                        <button class="btn btn-secondary" type="button" id="open">Open</button>
-                        <button class="btn btn-secondary" type="button" id="close">Close</button>
+                        <button class="btn btn-secondary" type="button" id="power_on">On</button>
+                        <button class="btn btn-secondary" type="button" id="power_off">Off</button>
+                    </div>
+                </div>-->
+
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <input type="text" class="form-control" id="boardURL" value="ws://192.168.0.188:8266/">
+                    </div>
+                    <div class="col">
+                        <input type="password" class="form-control" id="password" placeholder="Password">
                     </div>
                 </div>
+                <div class="btn-group d-flex">
+                    <button class="btn btn-secondary w-100" type="button" id="open">Open</button>
+                    <button class="btn btn-secondary w-100" type="button" id="close">Close</button>
+                </div>
+            </form>
+
+            <div class="btn-group" role="group">
+                <button class="btn btn-dark w-100" type="button" id="focusmode">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
+                        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+                    </svg>
+                </button>
             </div>
         </div>
     </div>
+
     <!--demo buttons-->
-    <!--<div class="container">
+    <!--
+    <div class="container">
         <div class="text-center">
             <div id="selector" class="col-12 col-sm-6 btn-group-vertical" role="group">
                 <h4 class="text-white">Demo</h4>
@@ -49,7 +72,9 @@
                 <button class="btn btn-dark text-left" type="button">run_clock(neon=True,linear=True)</button>
             </div>
         </div>
-    </div>-->
+    </div>
+    -->
+
     <!--image and color buttons-->
     <div class="container">
         <!--row 1 north brightness-->
@@ -102,41 +127,53 @@
             <div class="col"></div>
         </div>
     </div>
+
     <!--buttons-->
-    <div class="container">
-        <div class="text-center">
-            <div id="selector" class="col-12 col-sm-6 btn-group-vertical" role="group">
-                <h4 class="text-white">Dynamic (Timer)</h4>
-                <button class="btn btn-dark text-left" type="button">run_solun()</button>
-                <button class="btn btn-dark text-left" type="button">run_clock()</button>
-                <button class="btn btn-dark text-left" type="button">run_clock(neon=True,linear=True)</button>
-                <button class="btn btn-dark text-left" type="button">run_clock(neon=True,linear=False)</button>
-                <button class="btn btn-dark text-left" type="button">run_random()</button>
-                <button class="btn btn-dark text-left" type="button">run_spin({north},{frequency})</button>
-                <button class="btn btn-dark text-left" type="button">run_larson_scanner('south', {north}, {south})</button>
-                <button class="btn btn-dark text-left" type="button">stop_timer()</button>
-                <div class="input-group form-inline">
-                    <input type="number" id="frequency" min="0" step="0.1" value="0.25" class="form-control" />
-                    <div class="input-group-append"><span class="input-group-text">s</span></div>
-                    <label class="form-label" for="frequency">Frequency</label>
-                </div>
-                <h4 class="text-white">Static</h4>
-                <button class="btn btn-dark text-left" type="button">set_sides({north},{east},{south},{west}, True)</button>
-                <button class="btn btn-dark text-left" type="button">set_sides({north},{east},{south},{west}, False)</button>
-                <button class="btn btn-dark text-left" type="button">set_vertical({north},{south})</button>
-                <button class="btn btn-dark text-left" type="button">set_vertical_interp({north},{south})</button>
-                <button class="btn btn-dark text-left" type="button">set_horizontal({west},{east})</button>
-                <button class="btn btn-dark text-left" type="button">set_circular_background({north})</button>
-                <h4 class="text-white">Demo/Tests (blocking)</h4>
-                <button class="btn btn-dark text-left" type="button">cycle_channels()</button>
-                <button class="btn btn-dark text-left" type="button">cycle_color({north})</button>
-                <button class="btn btn-dark text-left" type="button">solun_demo()</button>
+    <div class="container text-center">
+
+        <h4 class="text-white">Dynamic (Timer)</h4>
+
+        <div class="btn-group-vertical col-12 col-sm-6" role="group">
+            <button class="code-btn btn btn-dark text-left w-100" type="button">run_solun()</button>
+            <button class="code-btn btn btn-dark text-left" type="button">run_clock()</button>
+            <button class="code-btn btn btn-dark text-left" type="button">run_clock(neon=True,linear=True)</button>
+            <button class="code-btn btn btn-dark text-left" type="button">run_clock(neon=True,linear=False)</button>
+            <button class="code-btn btn btn-dark text-left" type="button">run_random()</button>
+            <button class="code-btn btn btn-dark text-left" type="button">run_spin({north},{frequency})</button>
+            <button class="code-btn btn btn-dark text-left" type="button">run_larson_scanner('south', {north}, {south})</button>
+            <button class="code-btn btn btn-dark text-left" type="button">stop_timer()</button>
+            <div class="input-group form-inline">
+                <input type="number" id="frequency" min="0" step="0.1" value="0.25" class="form-control" />
+                <div class="input-group-append"><span class="input-group-text">s</span></div>
+                <label class="form-label" for="frequency">Frequency</label>
             </div>
         </div>
+
+        <h4 class="text-white">Static</h4>
+
+        <div class="btn-group-vertical col-12 col-sm-6" role="group">
+            <button class="code-btn btn btn-dark text-left w-100" type="button">set_sides({north},{east},{south},{west}, True)</button>
+            <button class="code-btn btn btn-dark text-left" type="button">set_sides({north},{east},{south},{west}, False)</button>
+            <button class="code-btn btn btn-dark text-left" type="button">set_vertical({north},{south})</button>
+            <button class="code-btn btn btn-dark text-left" type="button">set_vertical_interp({north},{south})</button>
+            <button class="code-btn btn btn-dark text-left" type="button">set_horizontal({west},{east})</button>
+            <button class="code-btn btn btn-dark text-left" type="button">set_circular_background({north})</button>
+        </div>
+
+        <h4 class="text-white">Demo/Tests (blocking)</h4>
+
+        <div class="btn-group-vertical col-12 col-sm-6" role="group">
+            <button class="code-btn btn btn-dark text-left" type="button">cycle_channels()</button>
+            <button class="code-btn btn btn-dark text-left" type="button">cycle_color({north})</button>
+            <button class="code-btn btn btn-dark text-left" type="button">solun_demo()</button>
+        </div>
+
     </div>
 </body>
-<script src="resources/jquery-3.5.1.min.js"></script>
-<script src="resources/bootstrap.min.js"></script>
+
+<script src="js/jquery-3.7.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 <script>
     var ws = null;
 
@@ -217,6 +254,24 @@
         $(object).parent().css("background-image", "linear-gradient(" + direction + "," + object.value + ", rgba(0,0,0,0))");
     }
 
+    function updatePlugStatus(status) {
+    }
+
+    function powerPlug(power) {
+
+        var xhr = new XMLHttpRequest();
+        const method = "GET";
+        var url = $('#plugURL').val() + 'cm?cmnd=Power ' + power;
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                $('#plugStatus').text(xhr.responseText);
+            }
+        };
+        xhr.open(method, url, true);
+        xhr.send();
+    }
+
     $(document).ready(function () {
         updateStatus(ws);
 
@@ -239,7 +294,15 @@
             }
         });
 
-        $('#selector button').click(function () {
+        $('#power_on').click(function () {
+            powerPlug(1)
+        });
+
+        $('#power_off').click(function () {
+            powerPlug(0);
+        });
+
+        $('.code-btn').click(function () {
             var w1 = parseInt($('#wNorth').val());
             var w2 = parseInt($('#wEast').val());
             var w3 = parseInt($('#wSouth').val());
@@ -255,6 +318,14 @@
             console.log(fn);
             if (ws) {
                 ws.send('paris.' + fn + '\r\n');
+            }
+        });
+
+        $('#focusmode').click(function () {
+            if (ws) {
+                ws.send('paris.stop_timer()\r\n');
+                /* top right bottom left */
+                ws.send('paris.set_sides((0,32,127,0),(0,32,127,0),(0,0,0,127),(0,32,127,0),False)\r\n');
             }
         });
 
