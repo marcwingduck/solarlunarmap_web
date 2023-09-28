@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Paris Solaire/Lunaire</title>
+    <title>Paris Solar Map</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="resources/favicon.png">
@@ -14,7 +14,7 @@
 
         <!--header-->
         <div class="col-12 col-sm-6 mx-auto card bg-dark text-white">
-            <h3>Paris Solaire/Lunaire <span class="badge badge-secondary" id="status"></span></h3>
+            <h3>Celestial Map <span class="badge badge-secondary" id="status"></span></h3>
 
             <!--<h5>Power <span class="badge badge-secondary" id="plugStatus"></span></h5>
                 <div class="form-group">
@@ -63,34 +63,14 @@
                         <path d="M6.493 12.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.052.075l-.001.004-.004.01V14l.002.008a.147.147 0 0 0 .016.033.62.62 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.62.62 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411Z" />
                     </svg>
                 </button>
+                <button class="btn btn-dark w-100" type="button" id="btn-vertical">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-bar-expand" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M3.646 10.146a.5.5 0 0 1 .708 0L8 13.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-4.292a.5.5 0 0 0 .708 0L8 2.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708zM1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8z" />
+                    </svg>
+                </button>
             </div>
         </div>
     </div>
-
-    <!--demo buttons-->
-    <!--
-    <div class="container">
-        <div class="text-center">
-            <div id="selector" class="col-12 col-sm-6 btn-group-vertical" role="group">
-                <h4 class="text-white">Demo</h4>
-                <button class="btn btn-dark text-left" type="button">solun_demo()</button>
-                <button class="btn btn-dark text-left" type="button">set_sides((255,0,255,0),(255,255,0,0),(0,255,255,0),(255,0,0,0), True)</button>
-                <button class="btn btn-dark text-left" type="button">set_sides((255,0,255,0),(255,255,0,0),(0,255,255,0),(255,0,0,0), False)</button>
-                <button class="btn btn-dark text-left" type="button">set_sides((0,0,0,100),(0,0,0,100),(200,0,255,0),(0,0,0,100), True)</button>
-                <button class="btn btn-dark text-left" type="button">set_sides((0,0,0,0),(0,0,0,255),(0,0,0,0),(0,0,0,255), False)</button>
-                <button class="btn btn-dark text-left" type="button">set_vertical((255,0,255,0),(0,255,255,0))</button>
-                <button class="btn btn-dark text-left" type="button">set_vertical_interp((255,0,255,0),(0,255,255,0))</button>
-                <button class="btn btn-dark text-left" type="button">set_circular_background((50,50,0,80))</button>
-                <button class="btn btn-dark text-left" type="button">run_spin((170,0,255,0))</button>
-                <button class="btn btn-dark text-left" type="button">run_larson_scanner('south', (0,255,0,0), (0,0,0,0))</button>
-                <button class="btn btn-dark text-left" type="button">stop_timer()</button>
-                <button class="btn btn-dark text-left" type="button">off()</button>
-                <button class="btn btn-dark text-left" type="button">run_clock()</button>
-                <button class="btn btn-dark text-left" type="button">run_clock(neon=True,linear=True)</button>
-            </div>
-        </div>
-    </div>
-    -->
 
     <!--image and color buttons-->
     <div class="container mt-2">
@@ -364,6 +344,13 @@
             if (ws) {
                 ws.send('paris.stop_timer()\r\n');
                 ws.send('paris.set_sides((0,32,127,0),(0,32,127,0),(0,0,0,127),(0,32,127,0),False)\r\n');
+            }
+        });
+
+        $('#btn-vertical').click(function () {
+            if (ws) {
+                ws.send('paris.stop_timer()\r\n');
+                ws.send('paris.set_sides((255,0,255,0),(0,0,0,0),(0,255,255,0),(0,0,0,0),True)\r\n');
             }
         });
 
