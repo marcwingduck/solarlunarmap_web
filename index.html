@@ -73,7 +73,7 @@
     </div>
 
     <!--image and color buttons-->
-    <div class="container mt-2">
+    <div class="container mt-4 mb-4">
         <!--row 1 north brightness-->
         <div class="row flex-nowrap no-gutters">
             <div class="col-8 offset-2">
@@ -126,43 +126,58 @@
     </div>
 
     <!--buttons-->
-    <div class="container mt-2 text-center">
+    <div class="container text-center">
 
-        <h4 class="text-white mt-2">Dynamic (Timer)</h4>
+        <h4 class="text-white mt-4" data-toggle="collapse" data-target="#collapseDynamic" aria-expanded="false" aria-controls="collapseDynamic">
+            Dynamic
+        </h4>
 
-        <div class="btn-group-vertical col-12 col-sm-6" role="group">
-            <button class="code-btn btn btn-dark text-left w-100" type="button">run_solun()</button>
-            <button class="code-btn btn btn-dark text-left" type="button">run_clock()</button>
-            <button class="code-btn btn btn-dark text-left" type="button">run_clock(neon=True,linear=True)</button>
-            <button class="code-btn btn btn-dark text-left" type="button">run_clock(neon=True,linear=False)</button>
-            <button class="code-btn btn btn-dark text-left" type="button">run_random()</button>
-            <button class="code-btn btn btn-dark text-left" type="button">run_spin({north},{frequency})</button>
-            <button class="code-btn btn btn-dark text-left" type="button">run_larson_scanner('south', {north}, {south})</button>
-            <button class="code-btn btn btn-dark text-left" type="button">stop_timer()</button>
-            <div class="input-group form-inline">
-                <input type="number" id="frequency" min="0" step="0.1" value="0.25" class="form-control" />
-                <div class="input-group-append"><span class="input-group-text">s</span></div>
-                <label class="form-label" for="frequency">Frequency</label>
+        <div class="collapse" id="collapseDynamic">
+            <div class="container col-12 col-sm-6 dynamic-group">
+                <div class="btn-group-vertical w-100 " role="group">
+                    <button class="code-btn btn btn-dark text-left" type="button">stop_timer()</button>
+                    <button class="code-btn btn btn-dark text-left" type="button">run_solun()</button>
+                    <button class="code-btn btn btn-dark text-left" type="button">run_clock()</button>
+                    <button class="code-btn btn btn-dark text-left" type="button">run_clock(neon=True,linear=True)</button>
+                    <button class="code-btn btn btn-dark text-left" type="button">run_clock(neon=True,linear=False)</button>
+                    <button class="code-btn btn btn-dark text-left" type="button">run_random()</button>
+                    <button class="code-btn btn btn-dark text-left" type="button">run_larson_scanner('south', {north}, {south})</button>
+                </div>
+                <div class="input-group form-inline ">
+                    <div class="input-group-prepend">
+                        <button class="code-btn btn btn-dark text-left" type="button">run_spin({north},{frequency})</button>
+                    </div>
+                    <input type="number" id="frequency" min="0" step="0.1" value="0.25" class="form-control" />
+                    <div class="input-group-append"><span class="input-group-text"> Hz</span></div>
+                </div>
             </div>
         </div>
 
-        <h4 class="text-white mt-2">Static</h4>
+        <h4 class="text-white mt-4" data-toggle="collapse" data-target="#collapseStatic" aria-expanded="false" aria-controls="collapseStatic">
+            Static
+        </h4>
 
-        <div class="btn-group-vertical col-12 col-sm-6" role="group">
-            <button class="code-btn btn btn-dark text-left w-100" type="button">set_sides({north},{east},{south},{west}, True)</button>
-            <button class="code-btn btn btn-dark text-left" type="button">set_sides({north},{east},{south},{west}, False)</button>
-            <button class="code-btn btn btn-dark text-left" type="button">set_vertical({north},{south})</button>
-            <button class="code-btn btn btn-dark text-left" type="button">set_vertical_interp({north},{south})</button>
-            <button class="code-btn btn btn-dark text-left" type="button">set_horizontal({west},{east})</button>
-            <button class="code-btn btn btn-dark text-left" type="button">set_circular_background({north})</button>
+        <div class="collapse" id="collapseStatic">
+            <div class="btn-group-vertical col-12 col-sm-6 static-group" role="group">
+                <button class="code-btn btn btn-dark text-left w-100" type="button">set_sides({north},{east},{south},{west}, True)</button>
+                <button class="code-btn btn btn-dark text-left" type="button">set_sides({north},{east},{south},{west}, False)</button>
+                <button class="code-btn btn btn-dark text-left" type="button">set_vertical({north},{south})</button>
+                <button class="code-btn btn btn-dark text-left" type="button">set_vertical_interp({north},{south})</button>
+                <button class="code-btn btn btn-dark text-left" type="button">set_horizontal({west},{east})</button>
+                <button class="code-btn btn btn-dark text-left" type="button">set_circular_background({north})</button>
+            </div>
         </div>
 
-        <h4 class="text-white mt-2">Demo/Tests (blocking)</h4>
+        <h4 class="text-white mt-4" data-toggle="collapse" data-target="#collapseTests" aria-expanded="false" aria-controls="collapseTests">
+            Tests
+        </h4>
 
-        <div class="btn-group-vertical col-12 col-sm-6" role="group">
-            <button class="code-btn btn btn-dark text-left" type="button">cycle_channels()</button>
-            <button class="code-btn btn btn-dark text-left" type="button">cycle_color({north})</button>
-            <button class="code-btn btn btn-dark text-left" type="button">solun_demo()</button>
+        <div class="collapse" id="collapseTests">
+            <div class="btn-group-vertical col-12 col-sm-6" role="group">
+                <button class="code-btn btn btn-dark text-left" type="button">cycle_channels()</button>
+                <button class="code-btn btn btn-dark text-left" type="button">cycle_color({north})</button>
+                <button class="code-btn btn btn-dark text-left" type="button">solun_demo()</button>
+            </div>
         </div>
 
     </div>
