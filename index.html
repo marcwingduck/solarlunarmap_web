@@ -10,10 +10,10 @@
 </head>
 
 <body>
-    <div class="container mt-2">
+    <div class="container-fluid col-lg-6 mt-2 ">
 
         <!--header-->
-        <div class="col-12 col-sm-6 mx-auto card bg-dark text-white">
+        <div class="mx-auto card bg-dark text-white">
             <h3>Celestial Map <span class="badge badge-secondary" id="status"></span></h3>
 
             <!--<h5>Power <span class="badge badge-secondary" id="plugStatus"></span></h5>
@@ -68,12 +68,22 @@
                         <path fill-rule="evenodd" d="M3.646 10.146a.5.5 0 0 1 .708 0L8 13.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-4.292a.5.5 0 0 0 .708 0L8 2.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708zM1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8z" />
                     </svg>
                 </button>
+                <button class="btn btn-dark w-100" type="button" id="btn-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    </svg>
+                </button>
+                <button class="btn btn-dark w-100" type="button" id="btn-square">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                    </svg>
+                </button>
             </div>
         </div>
     </div>
 
     <!--image and color buttons-->
-    <div class="container mt-4 mb-4">
+    <div class="container-fluid col-lg-8 mt-4 mb-4">
         <!--row 1 north brightness-->
         <div class="row flex-nowrap no-gutters">
             <div class="col-8 offset-2">
@@ -126,30 +136,28 @@
     </div>
 
     <!--buttons-->
-    <div class="container text-center">
+    <div class="container-fluid col-lg-6 text-center">
 
         <h4 class="text-white mt-4" data-toggle="collapse" data-target="#collapseDynamic" aria-expanded="false" aria-controls="collapseDynamic">
             Dynamic
         </h4>
 
         <div class="collapse" id="collapseDynamic">
-            <div class="container col-12 col-sm-6 dynamic-group">
-                <div class="btn-group-vertical w-100 " role="group">
-                    <button class="code-btn btn btn-dark text-left" type="button">stop_timer()</button>
-                    <button class="code-btn btn btn-dark text-left" type="button">run_solun()</button>
-                    <button class="code-btn btn btn-dark text-left" type="button">run_clock()</button>
-                    <button class="code-btn btn btn-dark text-left" type="button">run_clock(neon=True,linear=True)</button>
-                    <button class="code-btn btn btn-dark text-left" type="button">run_clock(neon=True,linear=False)</button>
-                    <button class="code-btn btn btn-dark text-left" type="button">run_random()</button>
-                    <button class="code-btn btn btn-dark text-left" type="button">run_larson_scanner('south', {north}, {south})</button>
+            <div class="btn-group-vertical w-100" role="group">
+                <button class="code-btn btn btn-dark text-left" type="button">stop_timer()</button>
+                <button class="code-btn btn btn-dark text-left" type="button">run_solun()</button>
+                <button class="code-btn btn btn-dark text-left" type="button">run_clock()</button>
+                <button class="code-btn btn btn-dark text-left" type="button">run_clock(neon=True,linear=True)</button>
+                <button class="code-btn btn btn-dark text-left" type="button">run_clock(neon=True,linear=False)</button>
+                <button class="code-btn btn btn-dark text-left" type="button">run_random()</button>
+                <button class="code-btn btn btn-dark text-left" type="button">run_larson_scanner('south', {north}, {south})</button>
+            </div>
+            <div class="input-group form-inline w-100">
+                <div class="input-group-prepend">
+                    <button class="code-btn btn btn-dark text-left" type="button">run_spin({north},{frequency})</button>
                 </div>
-                <div class="input-group form-inline ">
-                    <div class="input-group-prepend">
-                        <button class="code-btn btn btn-dark text-left" type="button">run_spin({north},{frequency})</button>
-                    </div>
-                    <input type="number" id="frequency" min="0" step="0.1" value="0.25" class="form-control" />
-                    <div class="input-group-append"><span class="input-group-text"> Hz</span></div>
-                </div>
+                <input type="number" id="frequency" min="0" step="0.1" value="0.25" class="form-control" />
+                <div class="input-group-append"><span class="input-group-text"> Hz</span></div>
             </div>
         </div>
 
@@ -158,8 +166,8 @@
         </h4>
 
         <div class="collapse" id="collapseStatic">
-            <div class="btn-group-vertical col-12 col-sm-6 static-group" role="group">
-                <button class="code-btn btn btn-dark text-left w-100" type="button">set_sides({north},{east},{south},{west}, True)</button>
+            <div class="btn-group-vertical w-100" role="group">
+                <button class="code-btn btn btn-dark text-left" type="button">set_sides({north},{east},{south},{west}, True)</button>
                 <button class="code-btn btn btn-dark text-left" type="button">set_sides({north},{east},{south},{west}, False)</button>
                 <button class="code-btn btn btn-dark text-left" type="button">set_vertical({north},{south})</button>
                 <button class="code-btn btn btn-dark text-left" type="button">set_vertical_interp({north},{south})</button>
@@ -173,7 +181,7 @@
         </h4>
 
         <div class="collapse" id="collapseTests">
-            <div class="btn-group-vertical col-12 col-sm-6" role="group">
+            <div class="btn-group-vertical w-100" role="group">
                 <button class="code-btn btn btn-dark text-left" type="button">cycle_channels()</button>
                 <button class="code-btn btn btn-dark text-left" type="button">cycle_color({north})</button>
                 <button class="code-btn btn btn-dark text-left" type="button">solun_demo()</button>
@@ -284,6 +292,30 @@
         xhr.send();
     }
 
+    function parseAndExec(text) {
+
+        // white values
+        var w1 = parseInt($('#wNorth').val());
+        var w2 = parseInt($('#wEast').val());
+        var w3 = parseInt($('#wSouth').val());
+        var w4 = parseInt($('#wWest').val());
+
+        // rgb values
+        var c1 = hex2rgb($('#north').val(), w1);
+        var c2 = hex2rgb($('#east').val(), w2);
+        var c3 = hex2rgb($('#south').val(), w3);
+        var c4 = hex2rgb($('#west').val(), w4);
+
+        // frequency
+        var f = parseFloat($('#frequency').val());
+
+        // replace placeholder
+        fn = text.replace('{north}', c1).replace('{east}', c2).replace('{south}', c3).replace('{west}', c4).replace('{frequency}', f);
+
+        // send
+        if (ws) ws.send('paris.' + fn + '\r\n');
+    }
+
     $(document).ready(function () {
         updateStatus(ws);
 
@@ -316,22 +348,7 @@
         });
 
         $('.code-btn').click(function () {
-            var w1 = parseInt($('#wNorth').val());
-            var w2 = parseInt($('#wEast').val());
-            var w3 = parseInt($('#wSouth').val());
-            var w4 = parseInt($('#wWest').val());
-
-            var f = parseFloat($('#frequency').val());
-
-            var c1 = hex2rgb($('#north').val(), w1);
-            var c2 = hex2rgb($('#east').val(), w2);
-            var c3 = hex2rgb($('#south').val(), w3);
-            var c4 = hex2rgb($('#west').val(), w4);
-            fn = $(this).text().replace('{north}', c1).replace('{east}', c2).replace('{south}', c3).replace('{west}', c4).replace('{frequency}', f);
-            console.log(fn);
-            if (ws) {
-                ws.send('paris.' + fn + '\r\n');
-            }
+            parseAndExec($(this).text());
         });
 
         $('#btn-solun').click(function () {
@@ -366,6 +383,20 @@
                 ws.send('paris.stop_timer()\r\n');
                 ws.send('paris.set_sides((255,0,255,0),(0,0,0,0),(0,255,255,0),(0,0,0,0),True)\r\n');
             }
+        });
+
+        $('#btn-circle').click(function () {
+            if (ws) {
+                ws.send('paris.stop_timer()\r\n');
+            }
+            parseAndExec('set_sides({north},{east},{south},{west}, False)');
+        });
+
+        $('#btn-square').click(function () {
+            if (ws) {
+                ws.send('paris.stop_timer()\r\n');
+            }
+            parseAndExec('set_sides({north},{east},{south},{west}, True)');
         });
 
         resizeVerticalSliders();
