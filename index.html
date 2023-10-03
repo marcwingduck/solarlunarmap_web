@@ -47,6 +47,12 @@
                     </svg>
                 </button>
                 <button class="btn btn-dark w-100" type="button" id="btn-clock">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+                    </svg>
+                </button>
+                <button class="btn btn-dark w-100" type="button" id="btn-clock2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
                     </svg>
@@ -148,11 +154,9 @@
         <div class="collapse" id="collapseDynamic">
             <div class="btn-group-vertical w-100" role="group">
                 <button class="code-btn btn btn-dark text-left" type="button">stop_timer()</button>
-                <button class="code-btn btn btn-dark text-left" type="button">run_solunar()</button>
                 <button class="code-btn btn btn-dark text-left" type="button">run_classic_clock(continuous=True)</button>
-                <button class="code-btn btn btn-dark text-left" type="button">run_classic_clock(continuous=False)</button>
-                <button class="code-btn btn btn-dark text-left" type="button">run_neon_clock(start_at_minute=True)</button>
-                <button class="code-btn btn btn-dark text-left" type="button">run_neon_clock(start_at_minute=False)</button>
+                <button class="code-btn btn btn-dark text-left" type="button">run_neo_clock(False,False,False)</button>
+                <button class="code-btn btn btn-dark text-left" type="button">run_neo_clock(True,False,False)</button>
                 <button class="code-btn btn btn-dark text-left" type="button">run_random()</button>
                 <button class="code-btn btn btn-dark text-left" type="button">run_larson_scanner('south', {north}, {south})</button>
             </div>
@@ -363,7 +367,13 @@
 
         $('#btn-clock').click(function () {
             if (ws) {
-                ws.send('paris.run_classic_clock(True)\r\n');
+                ws.send('paris.run_classic_clock(False)\r\n');
+            }
+        });
+
+        $('#btn-clock2').click(function () {
+            if (ws) {
+                ws.send('paris.run_neo_clock(True,True,True)\r\n');
             }
         });
 
